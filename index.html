@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--AngularJS CDN-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.js" integrity="sha512-rCVQBDU9Ny0aKLo1/B1MqgRjWEMlCL3WJ0DD6mJeK6qMZqpN9JCRxPtMQWWR9XWCMFIqlSgT4uOdwpvxWTSejw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--AngularJS route-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-route/1.8.2/angular-route.js" integrity="sha512-C92rntF0G0YH9kHzQlpux7ADvyKgyUwBqusewsHs/0ibOTNuHxFyVqDkI0BIcLGyP76fxgLOpMOLO6kmHCS/xA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <!--AngularJS resource-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-resource/1.8.2/angular-resource.js" integrity="sha512-C0Q5cBVjILTWCkbBlo1DhFwqGRhwheapSLmay077jcd4IefTe+kznyTd/cP/hDfL4i7iKI9LZEwTddQY7vWBVA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--AngujarJs animate-->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-animate/1.8.2/angular-animate.js" integrity="sha512-ikQJHkjSbJO2+xpZXCaYVUGUXpz+c8Ip02U8DaQDuLwADRbfkuPh6fyNUjD1zNuPjqj3j6y11iOydnYU8of1bQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
+    <!-- CSS CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!--CSS-->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        nav{
+            position: fixed;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 10vh;
+            background-color: #fff;
+            padding: 0 30px;
+            z-index: 5;
+        }
+
+        nav .logo{
+            font-weight: 700;
+            color: #F70023;
+            font-size: 1.7rem;
+        }
+
+        nav .logo:hover{
+            transition: transform 0.8s;
+            /* transform-style: preserve-3d; */
+            transform: rotate(360deg);
+        }
+
+        nav ul{
+            display: flex;
+            list-style: none;
+            height: 100%;
+        }
+
+        nav ul li{
+            height: 100%;
+            margin: 0 15px;
+        }
+
+        nav ul li, nav ul li a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        nav ul li a{
+            height: 100%;
+            text-decoration: none;
+            color: #400000;
+        }
+
+        nav ul li a:hover{
+            color: #F70023;
+            border-bottom: 3px solid #F70023;
+        }
+
+       main header{
+            background-image: linear-gradient(to bottom, rgba(2, 4, 14, 0.52), rgba(180, 25, 25, 0.73)),
+    url('./images/CR7.jpg');
+            background-position: top center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        header h1{
+            padding: 3rem;
+            width: 100%;
+            background-color: white;
+            opacity: 0.7;
+            text-align: center;
+            text-transform: uppercase;
+            margin: 0 5rem;
+            transition: all linear 3s;
+        }
+
+        .home{
+            padding: 2rem;
+        }
+
+        .home h2, .about .container h2{
+            font-size: 22px;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            margin: 2rem;
+            opacity: 0.7;
+        }
+
+        .home ul{
+            list-style: none;
+            margin: 0 2rem;
+        }
+
+        .home ul li, .about .container p{
+            margin: 1rem;
+            border-left: 3px solid #400000;
+            background-color: rgb(248, 234, 215);
+            padding: 1.5rem;
+        }
+
+        .about header{
+            width: 100%;
+            height: 100vh;
+        }
+
+        .about header video{
+            width: 100%;
+            height: 100%;
+        }
+        
+        .accolades h1{
+                padding: 20vh 3rem 3rem 3rem;
+                background-color: bisque;
+                color:#400000;
+                text-align: center;
+                text-transform: uppercase;
+            }
+
+            .accolades h3{
+                text-align: center;
+                font-size: 2rem;
+            }
+
+        .accolades .wrapper {
+                display: grid;
+                justify-content: center;
+                grid-gap: 10px;
+                grid-template-columns: 300px 300px 300px;
+                padding: 2rem;
+            }
+
+            .box {
+                border-radius: 5px;
+            }
+
+            .a {
+                grid-column: 1 / span 2;
+            }
+            .b {
+                grid-column: 3 / span 2 ;
+                grid-row: 1 / span 2;
+            }
+            .c {
+                grid-column: 1 ;
+                grid-row: 2 ;
+            }
+            .d {
+                grid-column: 2 ;
+                grid-row: 2 ;
+            }
+
+            .box img{
+                width: 100%;
+                height: 100%;
+            }
+
+
+        footer{
+            width: 100%;
+            padding: 2rem;
+            text-align: center;
+            background-color: #400000;
+            color: bisque
+        }
+    </style>
+
+    <title>Cristiano Ronaldo</title>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Cr7</div>
+        <ul>
+            <li><a href="#/">Home</a></li>
+            <li><a href="#/about">About CR7</a></li>
+            <li><a href="#/accolades">Accolades</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div ng-view></div>
+
+        <script type="text/ng-template" id="pages/home.html">
+            <header>
+                <h1>{{title}} &#128016;</h1>
+            </header>
+            <section class='home'>
+                <h2>{{message}}</h2>
+                <ul ng-repeat="fact in facts">
+                    <li><strong>{{fact.title}} : </strong>{{fact.body}}</li>
+                </ul>
+            </section>
+        </script>
+
+        <script type="text/ng-template" id="pages/about.html">
+            <section class="about">
+                <header>
+                    <video autoplay muted loop>
+                            <source type="video/mp4" src="./video/cr7-reaction.mp4">
+                    </video>
+                </header>
+                <div class="container">
+                    <h2>{{message}}</h2>
+                    <div ng-repeat="i in history">
+                        <p>{{i}}</p>
+                    </div>
+                </div>
+            </section>
+        </script>
+
+        <script type="text/ng-template" id="pages/accolades.html">
+            
+            <section class="accolades">
+                <h1>{{message}}</h1>
+                <div class="wrapper">
+                    <div ng-repeat="i in images" class="box {{i.id}}">
+                        <img ng-src="{{i.url}}" alt="{{i.alt}}"/>
+                    </div>
+                </div>
+                <h3 ng-repeat="msg in errMsg">{{msg}}</h3>
+            </section>
+        </script>
+    </main>
+   
+    <!--Footer-->
+    <footer>
+        &copy; Copy Right 2021. All rights reserved.
+    </footer>
+    <script>
+        const app = angular.module('myApp', ['ngRoute', 'ngResource']);
+
+        // This helps to avoid using ! in the a tag. Added to AngularJS 1.6 and above
+        app.config(['$locationProvider', function($locationProvider){
+            $locationProvider.hashPrefix('')
+        }])
+
+        // Route configuration
+        app.config(function($routeProvider){
+            $routeProvider
+            .when('/', {
+                templateUrl: 'pages/home.html',
+                controller: 'HomeController'
+            })
+            .when('/about', {
+                templateUrl: 'pages/about.html',
+                controller: 'AboutController'
+            })
+            .when('/accolades', {
+                templateUrl: 'pages/accolades.html',
+                controller: 'AccoladesController'
+            })
+            .otherwise({redirectTo:'/'})
+        })
+
+        app.controller('HomeController', function($scope, $interval){
+            
+            $scope.titles = ['GOAL KING!!! Cristiano Ronaldo', 'GOAT!', 'Haters watch!'];
+            $scope.title = $scope.titles[0];
+            
+            let i = 0;
+            $interval(function(){
+                $scope.title = $scope.titles[i];
+                i++;
+                if(i > 2){
+                    i = 0;
+                }
+            }, 3000);
+
+            $scope.message = 'Facts about Cristiano Ronaldo';
+            $scope.facts = [
+                {
+                    'title':"Ronaldo's lengthy name",
+                    'body': "Many football fans only know him as Cristiano Ronaldo, however, when you dig deeper, you will find his name is a little longer. His actual name is Cristiano Ronaldo dos Santos Aveiro. You may have known that, but what you may not have known is he was named after Ronald Regan, a former U.S President who was greatly loved by Ronaldo's father."
+                },
+                {
+                    'title':"His birthday and family background",
+                    'body': "Cristiano Ronaldo was born on 5th February 1985. He was born into a family of four as the last born. His father Jose, was a gardener and the footballer recollects his father was a heavy drinker. His mother, Maria was a cook and a cleaner, and she would work until late night so as to provide for her children and family."
+                },
+                {
+                    'title':"A friend in need",
+                    'body': "This one is not really about Ronaldo -at least not directly, but without this fact, you might never have heard about him.Ronaldo has accredited his success to Albert Fantrau. In his younger years, Albert was admitted to a football academy, however, he turned it down and Ronaldo was taken into the academy. When Ronaldo was asked Alfred why he refused the intake position, he simply responded, You're better than me. The rest, as they say, is history."
+                }
+
+            ]
+        })
+        app.controller('AboutController', function($scope){
+            $scope.message = 'About Cristiano Ronaldo';
+            $scope.history = [
+                "Ronaldo’s father, José Dinis Aveiro, was the equipment manager for the local club Andorinha. (The name Ronaldo was added to Cristiano’s name in honour of his father’s favourite movie actor, Ronald Reagan, who was U.S. president at the time of Cristiano’s birth.) At age 15 Ronaldo was diagnosed with a heart condition that necessitated surgery, but he was sidelined only briefly and made a full recovery. He first played for Clube Desportivo Nacional of Madeira and then transferred to Sporting Clube de Portugal (known as Sporting Lisbon), where he played for that club’s various youth teams before making his debut on Sporting’s first team in 2002.",
+                "A tall player at 6 feet 1 inch (1.85 metres), Ronaldo was a formidable athlete on the pitch. Originally a right-winger, he developed into a forward with a free-reined attacking style. He was able to mesmerize opponents with a sleight of foot that made sufficient space for openings in opposing defenses.",
+                "After a successful season with Sporting that brought the young player to the attention of Europe’s biggest football clubs, Ronaldo signed with English powerhouse Manchester United in 2003. He was an instant sensation and soon came to be regarded as one of the best forwards in the game. His finest season with United came in 2007–08, when he scored 42 League and Cup goals and earned the Golden Shoe award as Europe’s leading scorer, with 31 League goals. After helping United to a Champions League title in May 2008, Ronaldo captured Fédération Internationale de Football Association (FIFA) World Player of the Year honours for his stellar 2007–08 season. He also led United to an appearance in the 2009 Champions League final, which they lost to FC Barcelona.",
+                "Soon thereafter Ronaldo was sold to Spain’s Real Madrid—a club with which he had long been rumoured to want to play—for a then record £80 million (about $131 million) transfer fee. His scoring prowess continued with his new team, and he netted the most goals (40) in La Liga history during the 2010–11 season (his record was broken the following season by his rival Lionel Messi of Barcelona). In 2011–12 Ronaldo helped Madrid capture a La Liga championship and scored a personal-best 46 goals during the League season. He scored a total of 66 goals in 56 appearances with Madrid and the Portuguese national team in 2013 to earn his second world player of the year award (the FIFA World Player of the Year was renamed the FIFA Ballon d’Or in 2010). In 2014 he scored 52 goals in 43 games and led Madrid to a Champions League title, which resulted in Ronaldo capturing another Ballon d’Or award. In 2014–15 he netted 48 goals to lead La Liga in scoring. Ronaldo netted his 324th goal as a member of Real in October 2015 to become the club’s all-time leading goal scorer. He scored 35 La Liga goals in 2015–16 and helped Real win its record 11th Champions League title, and in December 2016 he won a fourth career Ballon d’Or for his accomplishments. Ronaldo scored 42 goals for Real across all competitions in 2016–17 and led his team to La Liga and Champions League titles that season, which resulted in a fifth career Ballon d’Or award. In 2017–18 he scored 44 goals in 44 games, and Real won a third straight Champions League title. In July 2018 he reached a four-year contract worth €112 million (about $132 million) with the Italian powerhouse Juventus. He finished his Real career with 311 goals in 292 matches. He scored 28 goals in his first season with Juventus—his lowest domestic goal total since his last season with Manchester United—as the powerhouse club won its eighth straight Italian league title.",
+                "On his home soil, after moving through the youth and under-21 ranks, Ronaldo had made his first appearance for Portugal’s full national team against Kazakhstan in August 2003 (four days after his debut for United). He was a key player in Portugal’s fourth-place finish at the 2006 World Cup and became the full-time captain of the national team in 2008. In 2012 his stellar play led Portugal to the semifinals of the European Championship, where his team was eliminated by rival Spain in a match that was decided by a penalty kick shoot-out. Ronaldo came into the 2014 World Cup hot off of his second world player of the year win, but his play at the tournament was spotty, and the entire Portugal team struggled during a group-stage elimination. In 2016 he helped Portugal win the European Championship, the country’s first major international tournament title, although he only played sparingly in the final because of a knee injury that he had sustained early in the match. Ronaldo played brilliantly at the 2018 World Cup, scoring four goals in four games as Portugal advanced to the knockout round only to lose its first match of that stage to a strong defensive Uruguay side.",
+                "Ronaldo was one of the most well-known sports stars off the field, and numerous studies of athletes’ popularity showed that he was the most-beloved athlete in the world during his playing peak. His extreme popularity made Ronaldo one of the highest-paid endorsers in sports history, and in November 2016 he became the third person (after basketball superstars Michael Jordan and LeBron James) to earn a “lifetime” contract from the sportswear company Nike. Moreover, he established his own successful “CR7” brand of products that included shoes, underwear, and fragrances. Ronaldo’s immense marketability was at the centre of a legal issue that arose in June 2017. That month prosecutors filed a lawsuit that accused Ronaldo of defrauding the Spanish government of €14.7 million ($16.5 million) by hiding his image-rights income in Spain from 2011 to 2014. He was accused of having underestimated the income he earned from the sale and licensing of his image rights and the accompanying tax obligations, but Ronaldo denied all allegations. However, in June 2018 he accepted a suspended two-year prison sentence and agreed to pay €18.8 million ($21.8 million) to the Spanish government to settle the case."
+            ]
+        })
+        app.controller('AccoladesController', function($scope, $http){
+            $scope.message = "C. Ronaldo's Accolades";
+
+            $http({
+                method: 'GET',
+                url: './data/accolade.json'
+            }).then(function(response){
+                $scope.images = response.data;  
+            }, function(response){
+                // $scope.errMsg = "Something Went Wrong With Your Request!";
+                $scope.errMsg = [response.statusText, response.status, response.xhrStatus];
+            })
+
+        })
+    </script>
+</body>
+</html>

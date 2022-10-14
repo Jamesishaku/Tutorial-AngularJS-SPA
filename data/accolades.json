@@ -1,0 +1,42 @@
+[
+    {
+        "id": "a",
+        "url": "./images/5-ballon-Dor.jpg",
+        "alt": "5 Ballon Dor"
+    },
+    {
+        "id": "b",
+        "url": "./images/best-portuguese-player.jpg",
+        "alt": "Best Portuguese Player"
+    },
+    {
+        "id": "c",
+        "url": "./images/CR7-guiness-record.jpg",
+        "alt": "CR7 Holding the world guiness record of most international goals by a male player"
+    },
+    {
+        "id": "d",
+        "url": "./images/Cristiano-Ronaldo-holds-his-award.jpg",
+        "alt": "Holding an award"
+    },
+    {
+        "id": "e",
+        "url": "./images/golden-boot.jpg",
+        "alt": "Holding a golden boot"
+    },
+    {
+        "id": "f",
+        "url": "./images/manU.jpg",
+        "alt": "The Young Cristiano"
+    },
+    {
+        "id": "g",
+        "url": "./images/Ronaldo-Ballon-Dor.jpg",
+        "alt": "Ballon Dor"
+    },
+    {
+        "id": "h",
+        "url": "./images/with-girlfriend.jpg",
+        "alt": "Cristiano and his girlfriend"
+    }
+]
